@@ -12,11 +12,9 @@ app.get('/', function(req, res){ res.render('index'); });  // show jade file for
 app.post('/', multer({ dest: './uploads/'}).single('upl'),  // post to /uploads
 function(req,res){ console.log(req.body); //form fields
 
-res.end(JSON.stringify({ size: req.file.size })); // display file size 
+res.end(JSON.stringify({ size: req.file.size })); // display file size
 
 res.status(204).end(); });
 
-var port = 3000;
-app.listen( port, function(){
-  console.log('listening on port '+port);
-} );
+var port = process.env.PORT || 3000;
+app.listen(port);
